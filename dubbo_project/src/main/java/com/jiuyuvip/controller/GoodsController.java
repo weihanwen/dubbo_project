@@ -14,8 +14,8 @@ import javax.annotation.Resource;
 
 /**
  *  GoodsController
- *  
-   */  
+ *
+ */
 @Controller
 public class GoodsController  {
     @Resource(name="goodsService")
@@ -33,7 +33,7 @@ public class GoodsController  {
                 goods.setVersion(goods.getVersion()+1);
                 result=(int)ServiceHelper.getGoodsService().versionGoodsStock(goods);
             }
-         } catch (Exception e) {
+        } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }
@@ -74,7 +74,7 @@ public class GoodsController  {
             if(goods != null && ((int)goods.getStock_number())-shopnumber >= 0){
                 goods.setStock_number(((int)goods.getStock_number())-shopnumber);
                 goods.setVersion(goods.getVersion()+1);
-                 result=(int)ServiceHelper.getGoodsService().updateUserNoVersionLocker(goods);
+                result=(int)ServiceHelper.getGoodsService().updateUserNoVersionLocker(goods);
             }
         } catch (Exception e) {
             // TODO: handle exception
@@ -88,7 +88,7 @@ public class GoodsController  {
 
     public static void main(String args[]) {
 
-         System.out.println("jieshu");
+        System.out.println("jieshu");
     }
 
 

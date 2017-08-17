@@ -21,11 +21,10 @@
 
 
 	<typeAliases>
-		<typeAlias type="com.jiuyuvip.mongodb.model.User" alias="user"/>
+		<typeAlias type="com.jiuyuvip.entity.User" alias="user"/>
 		<typeAlias type="com.jiuyuvip.entity.Page"  alias="page"/>
 		<typeAlias type="com.jiuyuvip.entity.Goods"  alias="goods"/>
-		<typeAlias type="com.jiuyuvip.entity.LoggerContent"  alias="logger"/>
-	</typeAliases>
+ 	</typeAliases>
 
 	<plugins>
 		<plugin interceptor="com.jiuyuvip.plugins.SqlPlugin">
@@ -40,9 +39,7 @@
 	</plugins>
 
 	<mappers>
-	 	<mapper resource="mybatis/user/UserMapper.xml" />
- 		<mapper resource="mybatis/user/GoodsMapper.xml" />
-		 <mapper resource="mybatis/user/LoggerMapper.xml" />
+  		<mapper resource="mybatis/user/GoodsMapper.xml" />
 	</mappers>
 
  	 

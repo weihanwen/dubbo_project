@@ -40,7 +40,6 @@
 
 	<mappers>
   		<mapper resource="mybatis/user/GoodsMapper.xml" />
-		 <mapper resource="mybatis/user/LoggerMapper.xml" />
 	</mappers>
 
  	 
