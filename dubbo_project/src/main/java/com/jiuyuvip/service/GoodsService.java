@@ -3,8 +3,7 @@ package com.jiuyuvip.service;
 import com.jiuyuvip.cache_version.VersionLocker;
 import com.jiuyuvip.dao.DaoSupport;
 import com.jiuyuvip.entity.Goods;
-import com.jiuyuvip.mongodb.model.User;
-import org.springframework.stereotype.Service;
+ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 

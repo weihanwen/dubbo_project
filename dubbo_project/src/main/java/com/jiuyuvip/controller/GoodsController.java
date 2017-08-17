@@ -1,11 +1,8 @@
 package com.jiuyuvip.controller;
 
 import com.jiuyuvip.entity.Goods;
-import com.jiuyuvip.entity.Page;
-import com.jiuyuvip.mongodb.UserDao;
-import com.jiuyuvip.mongodb.model.User;
 
-import com.jiuyuvip.service.UserFService;
+import com.jiuyuvip.service.GoodsService;
 import com.jiuyuvip.util.ServiceHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,49 +15,13 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- *  UserController
+ *  GoodsController
  *  
    */  
 @Controller
-public class UserController  {
-    @Resource(name="userFService")
-    private UserFService userFService;
-
-
-
-    //getIndex.do
-    @RequestMapping("/getIndex")
-    public ModelAndView getIndex(){
-        ModelAndView mav = new ModelAndView();
-        try {
-         	User user = userFService.selectUserById(10);
-            mav.addObject("user", user);
-            mav.setViewName("userinfor");
-   		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			mav.setViewName("404");
-		}
-         return mav;    
-    }
-
-    //userPage.do
-    @RequestMapping("/userPage")
-    public ModelAndView userPage(Page page){
-        ModelAndView mav = new ModelAndView();
-        try {
-            List<User> userList=userFService.alllistPageUser(page);
-            for (int i= 0; i<userList.size();i++){
-                System.out.println(userList.get(i).toString());
-            }
-
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-            mav.setViewName("404");
-        }
-        return mav;
-    }
+public class GoodsController  {
+    @Resource(name="goodsService")
+    private GoodsService goodsService;
 
     //updateStock.do---判断库存---id含有效果
     @RequestMapping("/updateStock")
@@ -125,42 +86,6 @@ public class UserController  {
     }
 
 
-    @Resource(name="userDao")
-    private UserDao userDao;
-
-    //loggerText.do---记录接口访问时间以及接口名称
-    @RequestMapping("/loggerText")
-    @ResponseBody
-    public Integer loggerText(){
-        Integer result=0;
-        try {
-            User user = new User();
-            user.setId("11111");
-            user.setUsername("skyLine2");
-            user.setPassword("7777777");
-            userDao.store(user);
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-
-    //loggerList.do
-    @RequestMapping("/loggerList")
-    public ModelAndView loggerList(){
-        ModelAndView mav = new ModelAndView();
-        try {
-            List<LoggerContent> loggerList=userFService.allLoggerList();
-            mav.addObject("loggerList",loggerList);
-            mav.setViewName("logger");
-         } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-         }
-        return mav;
-    }
 
 
     public static void main(String args[]) {
