@@ -21,10 +21,26 @@ public class GoodsController  {
     @Resource(name="goodsService")
     private GoodsService goodsService;
 
-    //updateStock.do---判断库存---id含有效果
-    @RequestMapping("/updateStock")
+
+    //findGoodsById.do---判断库存---id含有效果redis缓存
+    @RequestMapping("/findGoodsById")
     @ResponseBody
-    public synchronized Integer updateStock(Integer goods_id,Integer shopnumber){
+    public Goods findGoodsById(Integer goods_id ){
+            Goods goods=null;
+         try {
+             goods= ServiceHelper.getGoodsService().selectGoodsById(goods_id);
+          } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        return goods;
+     }
+
+
+    //updateStockOneNumber.do---判断库存---id含有效果
+    @RequestMapping("/updateStockOneNumber")
+    @ResponseBody
+    public synchronized Integer updateStockOneNumber(Integer goods_id,Integer shopnumber){
         Integer result=0;
         try {
             Goods goods= ServiceHelper.getGoodsService().selectGoodsById(goods_id);
@@ -40,34 +56,10 @@ public class GoodsController  {
         return result;
     }
 
-    //testone.do
-    @RequestMapping(value = "/testone", method = RequestMethod.POST)
+    //updateStockTwoNumber.do---判断库存注解实现效果
+    @RequestMapping("/updateStockTwoNumber")
     @ResponseBody
-    public String testone(@RequestBody String req) {
-
-        return "";
-    }
-
-    //testtwo.do
-    @RequestMapping(value = "/testtwo")
-    @ResponseBody
-    public String testtwo(@RequestBody String req) {
-
-        return "";
-    }
-
-    //testthree.do
-    @RequestMapping(value = "/testthree")
-    @ResponseBody
-    public String testthree( String req) {
-
-        return "";
-    }
-
-    //updateStock2.do---判断库存注解实现效果
-    @RequestMapping("/updateStock2")
-    @ResponseBody
-    public synchronized Integer updateStock2(Integer goods_id,Integer shopnumber){
+    public synchronized Integer updateStockTwoNumber(Integer goods_id,Integer shopnumber){
         Integer result=0;
         try {
             Goods goods= ServiceHelper.getGoodsService().selectGoodsById(goods_id);
@@ -84,6 +76,29 @@ public class GoodsController  {
     }
 
 
+    //one.do
+    @RequestMapping(value = "/one", method = RequestMethod.POST)
+    @ResponseBody
+    public String one(@RequestBody String req) {
+
+        return "";
+    }
+
+    //two.do
+    @RequestMapping(value = "/two")
+    @ResponseBody
+    public String two(@RequestBody String req) {
+
+        return "";
+    }
+
+    //three.do
+    @RequestMapping(value = "/three")
+    @ResponseBody
+    public String three( String req) {
+
+        return "";
+    }
 
 
     public static void main(String args[]) {
