@@ -3,6 +3,8 @@ package com.jiuyuvip.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jiuyuvip.util.DateFormatUtil;
+import com.jiuyuvip.util.ServiceHelper;
 import com.jiuyuvip.util.Tools;
 
 import net.sf.json.JSONObject;
@@ -23,7 +25,7 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter{
         String path = request.getRequestURL().toString();
         request.setAttribute("path",path);
         JSONObject jsonObject = JSONObject.fromObject(request.getParameterMap());
-        request.setAttribute("request_map", jsonObject.toString());
+        request.setAttribute("requestjson", jsonObject.toString());
         request.setAttribute("begin_nao_time", System.nanoTime());
         return true;
     }
@@ -37,15 +39,9 @@ public class LoginHandlerInterceptor extends HandlerInterceptorAdapter{
 //        HandlerMethod h=(HandlerMethod)handler;
 //        String result= h.getMethod().toString();
 //        //
-        String request_map = (String) req.getAttribute("request_map");
+        String requestjson = (String) req.getAttribute("requestjson");
         long interval = System.nanoTime() - begin_nao_time;//调用时间
-//        System.out.println("接口"+path+":调用时间为（毫微秒）"+interval);
-        LoggerContent logger=new LoggerContent(String.valueOf((new Date()).getTime()+Tools.getRandomNum()));
-        logger.setPath(path);
-        logger.setLongtime(String.valueOf(interval/1000000));
-        logger.setRequestmap(request_map);
-        logger.setResult("1");
-//         ServiceHelper.getMongodbLogger().insert(logger);
+        ServiceHelper.getDBLoggerDao().saveDetail(DateFormatUtil.Now()+(new Random()).nextInt(1000000),path,"1","400","", DateFormatUtil.Now(),"","");
      }
 
 }

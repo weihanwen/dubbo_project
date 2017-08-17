@@ -47,7 +47,7 @@ public interface DBLoggerDao {
      * @param request_parameter 请求参数
      * @param result_parameter  返回参数
      */
-    void save(String id, String path, String errorType, String errorContent, String use_millisecinds, String createtime, String request_parameter, String result_parameter);
+    void saveDetail(String id, String path, String errorType, String errorContent, String use_millisecinds, String createtime, String request_parameter, String result_parameter);
 
 
     /**

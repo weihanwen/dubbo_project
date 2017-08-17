@@ -46,7 +46,7 @@ public class DBLoggerDaoImpl implements DBLoggerDao {
      * @param result_parameter  返回参数
      */
     @Override
-    public void save(String id, String path, String errorType, String errorContent, String use_millisecinds, String createtime, String request_parameter, String result_parameter) {
+    public void saveDetail(String id, String path, String errorType, String errorContent, String use_millisecinds, String createtime, String request_parameter, String result_parameter) {
         DBLogger logger=new DBLogger();
         logger.setId(id);
         logger.setErrorType(errorType);
