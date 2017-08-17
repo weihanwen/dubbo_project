@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.jiuyuvip.mapper.GoodsMapper">
+
+     <!-- 查询单条记录 -->
+    <select id="selectGoodsById" parameterType="int" resultType="goods">
+        SELECT goods_id,goods_name,image_url,stock_number,version FROM tb_goods WHERE goods_id = #{goods_id}
+    </select>
+
+
+     <update id="versionGoodsStock"   >
+         update tb_goods set stock_number=#{stock_number}, version=#{version}  where goods_id=#{goods_id}
+     </update>
+
+    <update id="updateUserNoVersionLocker" >
+        update tb_goods set stock_number=#{stock_number}, version=#{version}  where goods_id=#{goods_id}
+    </update>
+
+
+</mapper> 
