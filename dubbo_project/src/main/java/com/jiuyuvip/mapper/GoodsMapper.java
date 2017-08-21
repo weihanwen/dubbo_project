@@ -4,6 +4,7 @@ package com.jiuyuvip.mapper;
 import com.jiuyuvip.cache_version.VersionLocker;
 import com.jiuyuvip.entity.Goods;
 
+
 public interface GoodsMapper {
 
 	// 不参与乐观锁控制

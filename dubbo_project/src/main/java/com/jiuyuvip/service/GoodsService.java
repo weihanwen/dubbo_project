@@ -3,6 +3,7 @@ package com.jiuyuvip.service;
 import com.jiuyuvip.cache_version.VersionLocker;
 import com.jiuyuvip.dao.DaoSupport;
 import com.jiuyuvip.entity.Goods;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +14,10 @@ import javax.annotation.Resource;
   */  
 @Service("goodsService")
 public class GoodsService {
-	
-	@Resource(name = "daoSupport")
+
+	@Autowired
 	private DaoSupport dao;
 
-
-	@VersionLocker
 	public Integer updateUserNoVersionLocker(Goods goods)throws Exception{
      	return (Integer)dao.update("com.jiuyuvip.mapper.GoodsMapper.updateUserNoVersionLocker",goods);
 	}
