@@ -37,6 +37,9 @@
         <junit.version>4.10</junit.version>
         <!-- mybatis版本号 -->
         <mybatis.version>3.2.6</mybatis.version>
+        <!-- Mybatis-Plus -->
+        <mybaitsplus.version>2.1.1</mybaitsplus.version>
+        <velocity.version>1.7</velocity.version>
     </properties>
 
     <dependencies>
@@ -113,6 +116,20 @@
             <version>${slf4j.version}</version>
         </dependency>
         <!-- log end -->
+
+        <!-- Mybatis-Plus -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>${mybaitsplus.version}</version>
+        </dependency>
+        <!-- generator vm -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${velocity.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!--spring单元测试依赖 -->
         <dependency>
